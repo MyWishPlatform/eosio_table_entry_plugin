@@ -17,7 +17,7 @@ namespace eosio {
 		ilog("starting table_entry_plugin");
 		auto& chain_plugin_ref = app().get_plugin<chain_plugin>();
 		auto& db = chain_plugin_ref.chain().db();
-		auto time = chain_plugin_ref.get_abi_serializer_max_time();
+		auto time = fc::microseconds(10000); // chain_plugin_ref.get_abi_serializer_max_time();
 		app().get_plugin<http_plugin>().add_api({
 			{"/v1/chain-ext/get_table_entry", [&](std::string url, std::string body, url_response_callback callback) {
 				try {
